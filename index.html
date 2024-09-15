@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christian James Santos</title>
+
+    <!-- Load EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/b8851469fb.js" crossorigin="anonymous"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {}
+          }
+        }
+    </script>
+
+    <style>
+        section {
+            min-height: 100vh;
+            padding-top: 4em;
+        }
+        nav li {
+            font-size: small;
+            padding: 5px 10px;
+            background-color: #262626;
+            border-radius: .25rem;
+        }
+        nav li:hover {
+            background-color: #404040;
+        }
+
+        .bg-image {
+            background-image: url('./images/chris.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .text-clip {
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* For border-image on <h1> */
+        #cjtext {
+            border-image-source: url('./images/chris.jpg'); /* Image for border */
+            border-image-slice: 1;
+            border-image-repeat: round;
+            border-radius: 50%;
+        }
+        .about {
+            font-size: 2em;
+            color: white;
+            text-align: center;
+        }
+        .about p {
+            font-size: 1rem;
+            z-index: 0;
+        }
+        .about img {
+            filter: invert(1);
+            width: 1.5em;
+        }
+
+        .techs div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .techs div i {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .techs div img, .techs div i {
+            min-height: 1.5em;
+            min-width: 1.5em;
+            border-radius: 50%;
+            font-size: 1.5em;
+            transition: 0.5s ease-in-out;
+        } 
+        .techs div img:hover {
+            background-color: rgb(255, 255, 255);
+            transition: 0.5s ease-in-out;
+            filter: invert(0);
+        }
+        .techs div i:hover {
+            background-color: rgb(255, 255, 255);
+            transition: 0.5s ease-in-out;
+            color: black;
+        }
+
+        .projects div div {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
+
+
+    </style>
+</head>
+<body class="bg-neutral-950 text-neutral-200 font-sans">
+    <main>
+        <nav class="flex flex-wrap h-20 items-center fixed w-full bg-neutral-900 top-0 z-10">
+            <div class="w-2/12 text-center text-3xl">
+                <h1>&lt;&radic;</h1>
+            </div>
+            <ul class="w-10/12 flex justify-evenly">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contacts">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section id="home" class="home flex flex-wrap w-full md:flex-row flex-col-reverse content-center justify-center">
+            <div class="w-6/12 flex justify-center items-center flex-col">
+                <h1 class="md:text-4xl text-2xl">Christian James Santos <br> Full-Stack Web Dev</h1>
+            </div>
+            <div class="w-6/12 text-9xl text-center flex justify-center items-center font-bold bg-neutral-900 text-clip bg-image">
+                <div class="w-max h-max" id="headerTextImage">
+                    <h1 class="border py-16 px-10 cursor-default" id="cjtext">&lt;&radic;</h1>
+                </div>
+                <img id="cjimage" class="hidden h-64" src="./images/chris.jpg" alt="Christian James Santos">
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class=" flex justify-center items-center md:h-fit h-screen w-full">
+                <p class="text-center">My name is Christian James Santos. I have web development experience from personal projects, freelance work, and currently, I teach and coach front-end web development.</p>
+            </div>
+            <h1 class="text-center my-5 font-bold">My Technologies</h1>
+            <div class="techs grid md:grid-cols-4 grid-cols-2 gap-10">
+                <div><i class="fa-brands fa-laravel"></i></div>
+                <div class="flex justify-center items-center"><img src="./assets/nextjs-icon-svgrepo-com.svg" alt=""></div>
+                <div><i class="fa-brands fa-react"></i></div>
+                <div><i class="fa-brands fa-node"></i></div>
+                <div><i class="fa-brands fa-php"></i></div>
+                <div><i class="fa-brands fa-css3-alt"></i></div>
+                <div><i class="fa-brands fa-html5"></i></div>
+                <div><i class="fa-brands fa-bootstrap"></i></div>
+                <div class="flex justify-center items-center"><img src="./assets/tailwind-css-svgrepo-com.svg" class="w-16 h-16" alt=""></div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h1 class="text-center my-5 font-bold text-4xl">My Works</h1>
+            <div class="grid md:grid-cols-2 grid-cols-1 gap-10 px-20">
+                <div>
+                    <img src="./assets/ws1.gif" alt="">
+                </div>
+                <div>
+                    <img src="./assets/ws2.gif" alt="">
+                </div>
+                <div>
+                    <img src="./assets/ws3.gif" alt="">
+                </div>
+                <div>
+                    <img src="./assets/ws4.gif" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section id="contacts" class="contact flex justify-center items-center">
+            <form id="contact-form" class="bg-neutral-900 text-black p-6 rounded-lg shadow-lg w-full max-w-md">
+                <h2 class="text-3xl font-bold mb-4 text-neutral-200">Contact Me</h2>
+                <input type="text" id="name" name="from_name" placeholder="Your Name" required
+                       class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500">
+                <input type="email" id="email" name="from_email" placeholder="Your Email" required
+                       class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500">
+                <textarea id="message" name="message" rows="4" placeholder="Your Message" required
+                          class="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-500"></textarea>
+                <button type="submit"
+                        class="w-full bg-neutral-500 text-white py-3 rounded-lg hover:bg-neutral-600 focus:outline-none focus:ring-2 focus:ring-neutral-500">
+                    Send
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="responseModal" class="fixed inset-0 flex items-center justify-center z-50 hidden bg-neutral-900 bg-opacity-50">
+        <div class="bg-neutral-900 p-6 rounded-lg shadow-lg w-100">
+            <h2 class="text-xl font-bold mb-4">Email Sent</h2>
+            <p>Your message has been sent successfully!</p>
+            <button id="closeModal" class="mt-4 bg-neutral-500 text-white py-2 px-4 rounded hover:bg-neutral-600">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const cjtext = document.getElementById("headerTextImage");
+        const cjimage = document.getElementById("cjimage");
+        cjtext.addEventListener("mouseover", function() {
+            cjtext.style.display = "none";
+            cjimage.style.display = "block";
+        });
+        cjtext.addEventListener("mouseout", function() {
+            setTimeout(function() {
+                cjtext.style.display = "block";
+                cjimage.style.display = "none";
+            }, 1000); // 1 second delay
+        });
+
+        // Initialize EmailJS
+        emailjs.init("qC0LKDT7FBrnOeRe2"); // Replace with your EmailJS public key
+
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            // Collect form data
+            const form = event.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+
+            // Send the email
+            emailjs.send("service_ku9z9f3", "template_b9u9v37", data)
+                .then(function(response) {
+                    document.getElementById('responseModal').classList.remove('hidden');
+                    form.reset(); // Clear the form fields
+                }, function(error) {
+                    alert('Failed to send email. Please try again.');
+                    console.error('Error:', error);
+                });
+        });
+
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('responseModal').classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
