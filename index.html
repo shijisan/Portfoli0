@@ -23,6 +23,10 @@
         }
     </script>
 
+    <!-- Particle.js -->
+
+    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
     <style>
         section {
             min-height: 100vh;
@@ -89,11 +93,32 @@
             font-size: 1.5em;
             transition: 0.5s ease-in-out;
         } 
-        .techs div img:hover {
+
+        .techs div img.next {
             background-color: rgb(255, 255, 255);
             transition: 0.5s ease-in-out;
-            filter: invert(0);
+            filter: none;
         }
+
+        .techs div img.next:hover {
+            background-color: rgb(255, 255, 255);
+            transition: 0.5s ease-in-out;
+            filter: invert(1);
+        }
+
+        .techs div img.tw {
+            background-color: rgb(255, 255, 255);
+            transition: 0.5s ease-in-out;
+            filter: invert(1);
+        }
+
+        .techs div img.tw:hover {
+            background-color: rgb(255, 255, 255);
+            transition: 0.5s ease-in-out;
+            filter: none;
+
+        }
+
         .techs div i:hover {
             background-color: rgb(255, 255, 255);
             transition: 0.5s ease-in-out;
@@ -106,11 +131,54 @@
             align-content: center;
         }
 
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: brightness(0.3);
+        }
+        
+
+        @keyframes appear {
+            from{
+                opacity: 0;
+                scale: .5;
+            }
+            to{
+                opacity: 1;
+                scale: 1;
+            }
+            
+        }
+
+        .about, .projects, .contact{
+            animation: appear linear;
+            animation-timeline: view();
+            animation-range: entry 0% cover 40%;
+        }
+        
+        #headerTextImage{
+            background-color: rgba(255, 255, 255, 0.05);
+
+        }
+
+        #headerTextImage, #cjimage {
+            transition: opacity 0.5s ease-in-out; /* Smooth transition effect */
+        }
+        #cjimage {
+            opacity: 0; /* Hidden by default */
+            display: none; /* Ensure it's not rendered initially */
+        }
 
     </style>
 </head>
 <body class="bg-neutral-950 text-neutral-200 font-sans">
     <main>
+        <div id="particles-js"></div>
+
         <nav class="flex flex-wrap h-20 items-center fixed w-full bg-neutral-900 top-0 z-10">
             <div class="w-2/12 text-center text-3xl">
                 <h1>&lt;&radic;</h1>
@@ -143,14 +211,14 @@
             <h1 class="text-center my-5 font-bold">My Technologies</h1>
             <div class="techs grid md:grid-cols-4 grid-cols-2 gap-10">
                 <div><i class="fa-brands fa-laravel"></i></div>
-                <div class="flex justify-center items-center"><img src="./assets/nextjs-icon-svgrepo-com.svg" alt=""></div>
+                <div class="flex justify-center items-center"><img class="next" src="./assets/nextjs-icon-svgrepo-com.svg" alt=""></div>
                 <div><i class="fa-brands fa-react"></i></div>
                 <div><i class="fa-brands fa-node"></i></div>
                 <div><i class="fa-brands fa-php"></i></div>
                 <div><i class="fa-brands fa-css3-alt"></i></div>
                 <div><i class="fa-brands fa-html5"></i></div>
                 <div><i class="fa-brands fa-bootstrap"></i></div>
-                <div class="flex justify-center items-center"><img src="./assets/tailwind-css-svgrepo-com.svg" class="w-16 h-16" alt=""></div>
+                <div class="flex justify-center items-center"><img class="tw" src="./assets/tailwind-css-svgrepo-com.svg" class="w-16 h-16" alt=""></div>
             </div>
         </section>
 
@@ -200,19 +268,60 @@
         </div>
     </div>
 
+    <!-- Hero logic -->
     <script>
         const cjtext = document.getElementById("headerTextImage");
         const cjimage = document.getElementById("cjimage");
-        cjtext.addEventListener("mouseover", function() {
-            cjtext.style.display = "none";
-            cjimage.style.display = "block";
-        });
+    
+        // Function to fade out the text and show the image
+        function showImage() {
+            cjtext.style.opacity = "0";  // Fade out the text
+            setTimeout(function() {
+                cjtext.style.display = "none"; // Hide text after fade-out
+                cjimage.style.display = "block"; // Show image
+                setTimeout(function() {
+                    cjimage.style.opacity = "1";  // Fade in the image
+                }, 0); // Small delay to trigger the transition
+            }, 500); // Wait for the fade-out to complete
+        }
+    
+        // Function to fade out the image and show the text
+        function showText() {
+            cjimage.style.opacity = "0";  // Fade out the image
+            setTimeout(function() {
+                cjimage.style.display = "none"; // Hide image after fade-out
+                cjtext.style.display = "block"; // Show text
+                setTimeout(function() {
+                    cjtext.style.opacity = "1";  // Fade in the text
+                }, 0); // Small delay to trigger the transition
+            }, 500); // Wait for the fade-out to complete
+        }
+    
+        // Handle mouseover for the text and image
+        cjtext.addEventListener("mouseover", showImage);
+        cjimage.addEventListener("mouseover", showImage);
+    
+        // Handle mouseout for the text and image
         cjtext.addEventListener("mouseout", function() {
             setTimeout(function() {
-                cjtext.style.display = "block";
-                cjimage.style.display = "none";
-            }, 1000); // 1 second delay
+                if (!cjimage.matches(':hover')) {
+                    showText(); // Show text only if not hovering over the image
+                }
+            }, 1000); // 3-second delay before switching back
         });
+    
+        cjimage.addEventListener("mouseout", function() {
+            setTimeout(function() {
+                if (!cjtext.matches(':hover')) {
+                    showText(); // Show text only if not hovering over the text
+                }
+            }, 1000); // 3-second delay before switching back
+        });
+    </script>
+    
+
+    <!-- Email.js logic -->
+    <script>
 
         // Initialize EmailJS
         emailjs.init("qC0LKDT7FBrnOeRe2"); // Replace with your EmailJS public key
@@ -240,5 +349,120 @@
             document.getElementById('responseModal').classList.add('hidden');
         });
     </script>
+
+    <!-- particle.js styles -->
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 3
+                    },
+                    "image": {
+                        "src": "img/github.svg",
+                        "width": 100,
+                        "height": 100
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 8,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 5
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,  <!-- Reduced speed -->
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": false,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": false,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 1
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+    
 </body>
 </html>
