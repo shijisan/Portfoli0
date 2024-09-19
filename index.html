@@ -24,7 +24,6 @@
     </script>
 
     <!-- Particle.js -->
-
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <style>
@@ -48,7 +47,7 @@
         }
 
         .bg-image {
-            background-image: url('./images/chris.jpg'); /* Replace with your image path */
+            background-image: url('./images/chris.webp'); 
             background-size: cover;
             background-position: center;
         }
@@ -61,7 +60,7 @@
 
         /* For border-image on <h1> */
         #cjtext {
-            border-image-source: url('./images/chris.jpg'); /* Image for border */
+            border-image-source: url('./images/chris.webp');
             border-image-slice: 1;
             border-image-repeat: round;
             border-radius: 50%;
@@ -204,7 +203,7 @@
                 <div class="w-max h-max" id="headerTextImage">
                     <h1 class="border py-16 px-10 cursor-default" id="cjtext">&lt;&radic;</h1>
                 </div>
-                <img id="cjimage" class="hidden h-64" src="./images/chris.jpg" alt="Christian James Santos">
+                <img id="cjimage" class="hidden h-64" src="./images/chris.webp" alt="Christian James Santos">
             </div>
         </section>
 
@@ -280,47 +279,47 @@
     
         // Function to fade out the text and show the image
         function showImage() {
-            cjtext.style.opacity = "0";  // Fade out the text
+            cjtext.style.opacity = "0";  
             setTimeout(function() {
-                cjtext.style.display = "none"; // Hide text after fade-out
-                cjimage.style.display = "block"; // Show image
+                cjtext.style.display = "none"; 
+                cjimage.style.display = "block"; 
                 setTimeout(function() {
-                    cjimage.style.opacity = "1";  // Fade in the image
-                }, 0); // Small delay to trigger the transition
-            }, 500); // Wait for the fade-out to complete
+                    cjimage.style.opacity = "1";  
+                }, 0); 
+            }, 500);
         }
     
         // Function to fade out the image and show the text
         function showText() {
-            cjimage.style.opacity = "0";  // Fade out the image
+            cjimage.style.opacity = "0";  
             setTimeout(function() {
-                cjimage.style.display = "none"; // Hide image after fade-out
-                cjtext.style.display = "block"; // Show text
+                cjimage.style.display = "none";
+                cjtext.style.display = "block"; 
                 setTimeout(function() {
-                    cjtext.style.opacity = "1";  // Fade in the text
-                }, 0); // Small delay to trigger the transition
-            }, 500); // Wait for the fade-out to complete
+                    cjtext.style.opacity = "1"; 
+                }, 0);
+            }, 500);
         }
     
         // Handle mouseover for the text and image
         cjtext.addEventListener("mouseover", showImage);
         cjimage.addEventListener("mouseover", showImage);
     
-        // Handle mouseout for the text and image
+ 
         cjtext.addEventListener("mouseout", function() {
             setTimeout(function() {
                 if (!cjimage.matches(':hover')) {
-                    showText(); // Show text only if not hovering over the image
+                    showText(); 
                 }
-            }, 1000); // 3-second delay before switching back
+            }, 1000);
         });
     
         cjimage.addEventListener("mouseout", function() {
             setTimeout(function() {
                 if (!cjtext.matches(':hover')) {
-                    showText(); // Show text only if not hovering over the text
+                    showText(); 
                 }
-            }, 1000); // 3-second delay before switching back
+            }, 1000);
         });
     </script>
     
@@ -329,10 +328,10 @@
     <script>
 
         // Initialize EmailJS
-        emailjs.init("qC0LKDT7FBrnOeRe2"); // Replace with your EmailJS public key
+        emailjs.init("qC0LKDT7FBrnOeRe2"); 
 
         document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the form from submitting the default way
+            event.preventDefault(); 
 
             // Collect form data
             const form = event.target;
@@ -413,7 +412,7 @@
                 },
                 "move": {
                     "enable": true,
-                    "speed": 2,  <!-- Reduced speed -->
+                    "speed": 2,  
                     "direction": "none",
                     "random": false,
                     "straight": false,
